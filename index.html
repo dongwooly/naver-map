@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 위쪽 이미지 -->
+    <div class="image">
+        <img src="images/letter.png" alt="Top Image">
+    </div>
+
+    <!-- GIF 이미지 -->
+    <div class="gif-container">
+        <img src="gifs/1.gif" alt="Animation 1" class="gif-image">
+    </div>
+
+    <!-- 위쪽 이미지 -->
+    <div class="image">
+        <img src="images/info.png" alt="info">
+    </div>
+
+    <!-- D-Day 카운트다운 -->
+    <div class="countdown" id="countdown">
+        식까지 00일 00시간 남았습니다.
+    </div>
+
+    <!-- 일정에 추가하기 버튼 -->
+    <div class="add-to-calendar">
+        <a href="event.ics" download="event.ics">일정에 추가하기</a>
+    </div>
+
+    <!-- 갤러리 -->
+    <div class="gallery">
+        <img src="gallery/1.jpg" alt="Image 1">
+        <img src="gallery/2.jpg" alt="Image 2">
+        <img src="gallery/3.jpg" alt="Image 3">
+        <img src="gallery/4.jpg" alt="Image 4">
+        <img src="gallery/5.jpg" alt="Image 5">
+    </div>
+
+    <!-- 아래쪽 이미지 -->
+    <div class="image">
+        <img src="images/location.png" alt="Bottom Image">
+    </div>
+
+    <!-- 네이버 지도 -->
+    <div id="map" style="width:100%;height:400px;"></div>
+
+    <!-- 하단 텍스트 -->
+    <footer class="footer">
+        © 2024 Dongwoo Lee & Daeun Jung All rights reserved.
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=lwbs8o0l83"></script>
+    <script>
+        var mapOptions = {
+            center: new naver.maps.LatLng(37.5665, 126.9780), // 예시 좌표: 서울
+            zoom: 10
+        };
+        var map = new naver.maps.Map('map', mapOptions);
+    </script>
+
+    <script>
+        function updateCountdown() {
+            var now = new Date();
+            var eventDate = new Date("2024-07-27T18:00:00+09:00"); // 한국 시간 기준
+            var remainingTime = eventDate - now;
+
+            if (remainingTime < 0) {
+                document.getElementById("countdown").innerHTML = "행사가 종료되었습니다.";
+                return;
+            }
+
+            var days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+            if (days > 0) {
+                document.getElementById("countdown").innerHTML = "식까지 " + days + "일 " + hours + "시간 남았습니다.";
+            } else {
+                var totalHours = Math.floor(remainingTime / (1000 * 60 * 60));
+                document.getElementById("countdown").innerHTML = "식까지 " + totalHours + "시간 남았습니다.";
+            }
+        }
+
+        updateCountdown(); // 초기 호출
+        setInterval(updateCountdown, 1000 * 60 * 60); // 한 시간에 한 번 업데이트
+    </script>
+
+</body>
+</html>
