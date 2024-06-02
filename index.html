@@ -3,33 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Image Gallery</title>
+    <title>이동우 정다은 결혼식</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- 위쪽 이미지 -->
-    <div class="image">
-        <img src="images/letter.png" alt="Top Image">
+    <!-- 첫째 이미지 -->
+    <div class="image-container">
+        <div class="image">
+            <img src="images/1.png" alt="Image 1" style="margin-bottom: 70px;">
+        </div>
+        <div class="overlay"></div>
     </div>
 
     <!-- GIF 이미지 -->
     <div class="gif-container">
         <img src="gifs/1.gif" alt="Animation 1" class="gif-image">
+        <div class="overlay"></div>
     </div>
 
-    <!-- 위쪽 이미지 -->
-    <div class="image">
-        <img src="images/info.png" alt="info">
+    <!-- 둘째 이미지 -->
+    <div class="image-container">
+        <div class="image">
+            <img src="images/2.png" alt="Image 2" style="margin-top: 100px;">
+        </div>
+        <div class="overlay"></div>
     </div>
 
     <!-- D-Day 카운트다운 -->
-    <div class="countdown" id="countdown">
+    <div class="countdown" id="countdown" style="margin-top: 40px;">
         식까지 00일 00시간 남았습니다.
     </div>
 
     <!-- 일정에 추가하기 버튼 -->
-    <div class="add-to-calendar">
+    <div class="add-to-calendar" style="margin-top: 20px;">
         <a href="event.ics" download="event.ics">일정에 추가하기</a>
+    </div>
+
+    <!-- 셋째 이미지 -->
+    <div class="image-container">
+        <div class="image">
+            <img src="images/3.png" alt="Image 3" style="margin-top: 70px;">
+            <div class="overlay"></div>
+        </div>
     </div>
 
     <!-- 갤러리 -->
@@ -39,29 +54,68 @@
         <img src="gallery/3.jpg" alt="Image 3">
         <img src="gallery/4.jpg" alt="Image 4">
         <img src="gallery/5.jpg" alt="Image 5">
+        <img src="gallery/6.jpg" alt="Image 6">
+        <img src="gallery/7.jpg" alt="Image 7">
+        <img src="gallery/8.jpg" alt="Image 8">
+        <img src="gallery/9.jpg" alt="Image 9">
+        <img src="gallery/10.jpg" alt="Image 10">
+        <img src="gallery/11.jpg" alt="Image 11">
+        <img src="gallery/12.jpg" alt="Image 12">
+        <img src="gallery/13.jpg" alt="Image 13">
+        <img src="gallery/14.jpg" alt="Image 14">
+        <img src="gallery/15.jpg" alt="Image 15">
+        <img src="gallery/16.jpg" alt="Image 16">
+        <img src="gallery/17.jpg" alt="Image 17">
     </div>
 
-    <!-- 아래쪽 이미지 -->
-    <div class="image">
-        <img src="images/location.png" alt="Bottom Image">
+    <!-- 넷째 이미지 -->
+    <div class="image-container">
+        <div class="image">
+            <img src="images/4.png" alt="Image 4" style="margin-bottom: 40px;">
+            <div class="overlay"></div>
+        </div>
     </div>
-
+    
     <!-- 네이버 지도 -->
-    <div id="map" style="width:100%;height:400px;"></div>
+    <div id="map" style="width:85%;height:400px;"></div>
 
-    <!-- 하단 텍스트 -->
-    <footer class="footer">
-        © 2024 Dongwoo Lee & Daeun Jung All rights reserved.
-    </footer>
+    <!-- 다섯째 이미지 -->
+    <div class="image-container">
+        <div class="image">
+            <img src="images/5.png" alt="Image 5" style="margin-top: 50px; margin-bottom: 15px;">
+            <div class="overlay"></div>
+        </div>
+    </div>
+
+    <!-- 복사하기 버튼 -->
+    <div class="button-container">
+        <button onclick="copyToClipboard('토스뱅크 1000-0044-3778 이동우')">신랑에게</button>
+        <button onclick="copyToClipboard('토스뱅크 1000-0802-4051 정다은')">신부에게</button>
+    </div>
+
+    <!-- 여섯째 이미지 -->
+    <div class="image-container">
+        <div class="image">
+            <img src="images/6.png" alt="Image 6" style="margin-top: 150px;">
+            <div class="overlay"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
     <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=lwbs8o0l83"></script>
     <script>
-        var mapOptions = {
-            center: new naver.maps.LatLng(37.5665, 126.9780), // 예시 좌표: 서울
-            zoom: 10
-        };
-        var map = new naver.maps.Map('map', mapOptions);
+        var HOME_PATH = window.HOME_PATH || '.';
+        var position = new naver.maps.LatLng(37.522160, 126.919942);
+
+        var map = new naver.maps.Map('map', {
+            center: position,
+            zoom: 17
+        });
+
+        var marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(37.522160, 126.919942),
+            map: map
+        });
     </script>
 
     <script>

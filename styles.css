@@ -7,17 +7,24 @@ body {
     background-color: #FFFEE8;
 }
 
+.image-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+}
+
 .image img {
     width: 100%;
     max-width: 800px; /* 원하는 최대 너비 설정 */
     height: auto;
-    margin: 20px 0; /* 이미지 간격 설정 */
+    margin: 0; /* 이미지 간격 설정 */
+    pointer-events: none; /* 이미지에 대한 클릭 이벤트를 비활성화 */
 }
 
 .gif-container {
     display: flex;
     justify-content: center;
-    width: 60%;
+    width: 50%;
     margin: 20px 0; /* GIF 이미지 위아래 간격 설정 */
 }
 
@@ -25,18 +32,18 @@ body {
     max-width: 800px; /* GIF 이미지의 최대 너비 설정 */
     width: 100%;
     height: auto;
+    pointer-events: none; /* 이미지에 대한 클릭 이벤트를 비활성화 */
 }
 
 .countdown {
     font-size: 20px;
     color: #448D7A; /* 글씨 색상 지정 */
     text-align: center;
-    margin: 20px 0;
     font-family: 'Arial', sans-serif; /* 폰트 지정 */
 }
 
 .add-to-calendar {
-    margin: 20px 0;
+    margin: 0;
     text-align: center;
 }
 
@@ -46,11 +53,35 @@ body {
     border: 2px solid #448D7A;
     color: #448D7A;
     text-decoration: none;
-    border-radius: 21.5px;
+    border-radius: 30px;
     font-size: 16px;
 }
 
 .add-to-calendar a:hover {
+    background-color: #448D7A;
+    color: white;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #448D7A;
+    border: 2px solid #448D7A;
+    background: none;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 120px; /* 버튼의 고정된 너비 설정 */
+    margin: 0 10px; /* 버튼 간의 간격 */
+}
+
+button:hover {
     background-color: #448D7A;
     color: white;
 }
@@ -66,13 +97,13 @@ body {
 }
 
 .gallery img {
-    width: 100%;
-    height: auto;
+    height: 100%; /* 이미지의 높이를 부모 요소에 맞추기 위해 설정 */
+    max-height: 400px; /* 이미지의 최대 높이 설정 */
+    width: auto; /* 너비를 자동으로 설정하여 비율 유지 */
     scroll-snap-align: center;
-    object-fit: cover;
+    object-fit: contain; /* 이미지가 잘리지 않도록 설정 */
     flex-shrink: 0;
     margin-right: 10px; /* 이미지 간격 설정 */
-    max-width: 300px; /* 이미지의 최대 너비 설정 */
 }
 
 .gallery img:last-child {
@@ -83,12 +114,4 @@ body {
     width: 100%;
     height: 400px;
     margin: 20px 0;
-}
-
-.footer {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0 30px 0;
-    font-size: 12px;
-    color: #448D7A;
 }
