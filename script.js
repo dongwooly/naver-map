@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 모든 이미지를 한 번에 로드하고 표시
     function loadAllImages() {
+        // 갤러리 초기화 (이전에 추가된 이미지가 있는 경우 제거)
+        gallery.innerHTML = '';
+
         for (let i = 1; i <= numberOfImages; i++) {
             const galleryContainer = document.createElement('div');
             galleryContainer.className = 'gallery-container';
