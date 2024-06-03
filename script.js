@@ -1,20 +1,10 @@
-// 이미지 복사 방지를 위한 기존 코드 유지
-document.addEventListener('contextmenu', function(e) {
-    if (e.target.tagName === 'IMG') {
-        e.preventDefault();
-    }
-});
-
-// 두 손가락 확대 허용을 위한 터치 이벤트 처리
 document.addEventListener('touchmove', function(event) {
-    if (event.touches.length > 1) {
-        // 두 손가락 이상의 터치 이벤트는 허용
+    if (event.touches.length > 1 || event.scale !== 1) {
+        // 두 손가락 이상의 터치 이벤트 또는 확대/축소 이벤트는 허용
         return;
     }
-    // 그 외의 터치 이벤트는 막음
-    if (event.scale !== 1) {
-        event.preventDefault();
-    }
+    // 한 손가락 터치 이동 이벤트는 막음
+    event.preventDefault();
 }, { passive: false });
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -80,3 +70,9 @@ function copyToClipboard(text) {
         console.error('복사에 실패했습니다.', err);
     });
 }
+
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+    }
+});
