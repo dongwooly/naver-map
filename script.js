@@ -1,12 +1,29 @@
-// script.js
+// 이미지 복사 방지를 위한 기존 코드 유지
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+    }
+});
+
+// 두 손가락 확대 허용을 위한 터치 이벤트 처리
+document.addEventListener('touchmove', function(event) {
+    if (event.touches.length > 1) {
+        // 두 손가락 이상의 터치 이벤트는 허용
+        return;
+    }
+    // 그 외의 터치 이벤트는 막음
+    if (event.scale !== 1) {
+        event.preventDefault();
+    }
+}, { passive: false });
 
 document.addEventListener("DOMContentLoaded", function() {
     const gallery = document.getElementById('gallery');
-    const numberOfImages = 55; // 원하는 이미지 수 설정
+    const numberOfImages = 52; // 원하는 이미지 수 설정
 
     for (let i = 1; i <= numberOfImages; i++) {
         const galleryContainer = document.createElement('div');
-        galleryContainer.className = 'gallery-container';
+        galleryContainer.className = 'gallery-container'; // fade-in 클래스 제거
 
         const img = document.createElement('img');
         img.src = `gallery/${i}.jpg`; // 이미지 경로 설정
@@ -54,24 +71,6 @@ document.addEventListener("DOMContentLoaded", function() {
     faders.forEach(fader => {
         appearOnScroll.observe(fader);
     });
-
-    // 터치 이벤트에서 수평 스크롤만 허용
-    let startX;
-    gallery.addEventListener('touchstart', function(e) {
-        startX = e.touches[0].clientX;
-    });
-
-    gallery.addEventListener('touchmove', function(e) {
-        let moveX = e.touches[0].clientX;
-        let diffX = moveX - startX;
-
-        // 수평 이동만 허용
-        if (Math.abs(diffX) > 10) {
-            e.stopPropagation();
-        } else {
-            e.preventDefault();
-        }
-    }, { passive: false });
 });
 
 function copyToClipboard(text) {
@@ -81,15 +80,3 @@ function copyToClipboard(text) {
         console.error('복사에 실패했습니다.', err);
     });
 }
-
-document.addEventListener('touchmove', function(event) {
-    if (event.scale !== 1) {
-        event.preventDefault();
-    }
-}, { passive: false });
-
-document.addEventListener('contextmenu', function(e) {
-    if (e.target.tagName === 'IMG') {
-        e.preventDefault();
-    }
-});
