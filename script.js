@@ -19,7 +19,7 @@ document.addEventListener('touchmove', function(event) {
 
 document.addEventListener("DOMContentLoaded", function() {
     const gallery = document.getElementById('gallery');
-    const numberOfImages = 52; // 원하는 이미지 수 설정
+    const numberOfImages = 51; // 원하는 이미지 수 설정
 
     for (let i = 1; i <= numberOfImages; i++) {
         const galleryContainer = document.createElement('div');
