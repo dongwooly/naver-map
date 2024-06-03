@@ -36,8 +36,8 @@ body {
 }
 
 .countdown {
-    font-size: 20px;
-    color: #448D7A; /* 글씨 색상 지정 */
+    font-size: 16px;
+    color: #438C7A; /* 글씨 색상 지정 */
     text-align: center;
     font-family: 'Arial', sans-serif; /* 폰트 지정 */
 }
@@ -50,15 +50,15 @@ body {
 .add-to-calendar a {
     display: inline-block;
     padding: 10px 20px;
-    border: 2px solid #448D7A;
-    color: #448D7A;
+    border: 2px solid #438C7A;
+    color: #438C7A;
     text-decoration: none;
     border-radius: 30px;
     font-size: 16px;
 }
 
 .add-to-calendar a:hover {
-    background-color: #448D7A;
+    background-color: #438C7A;
     color: white;
 }
 
@@ -72,8 +72,8 @@ body {
 button {
     padding: 10px 20px;
     font-size: 16px;
-    color: #448D7A;
-    border: 2px solid #448D7A;
+    color: #438C7A;
+    border: 2px solid #438C7A;
     background: none;
     border-radius: 30px;
     cursor: pointer;
@@ -82,7 +82,7 @@ button {
 }
 
 button:hover {
-    background-color: #448D7A;
+    background-color: #438C7A;
     color: white;
 }
 
