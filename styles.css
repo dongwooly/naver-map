@@ -90,6 +90,7 @@ button:hover {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
+    overflow-y: hidden; /* 수직 스크롤 숨김 */
     scroll-snap-type: x mandatory;
     width: 100%;
     max-width: 800px; /* 갤러리의 최대 너비 설정 */
