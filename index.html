@@ -62,7 +62,7 @@
 
         <!-- 일정에 추가하기 버튼 -->
         <div class="add-to-calendar fade-in" style="margin-bottom: 50px;">
-            <a href="event.ics" download="event.ics">일정에 추가하기</a>
+            <a href="#" id="downloadCalendar">일정에 추가하기</a>
         </div>
 
         <!-- 다섯째 이미지 -->
@@ -185,6 +185,18 @@
 
         updateCountdown(); // 초기 호출
         setInterval(updateCountdown, 1000 * 60 * 60); // 한 시간에 한 번 업데이트
+    </script>
+
+    <script>
+    document.getElementById('downloadCalendar').addEventListener('click', function(e) {
+        e.preventDefault();
+        const link = document.createElement('a');
+        link.href = 'event.ics'; // 실제 .ics 파일 경로
+        link.download = 'event.ics';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
     </script>
 
 </body>
