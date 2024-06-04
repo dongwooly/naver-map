@@ -27,11 +27,11 @@ body {
     width: 100%;
     max-width: 800px;
     height: auto;
-    display: block;
     pointer-events: none;
 }
 
 .first-image-container img {
+    display: block;
     opacity: 0; /* 로드되기 전에는 보이지 않도록 설정 */
     transition: opacity 1s ease-in-out;
 }
