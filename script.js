@@ -27,23 +27,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // 모바일 롱 프레스 방지
             img.addEventListener('touchstart', function(e) {
-                if (e.touches.length > 1 || e.targetTouches.length > 1) {
+                if (e.touches.length === 1) {
                     e.preventDefault();
+                    img.style.pointerEvents = 'none';
+                    setTimeout(() => {
+                        img.style.pointerEvents = 'auto';
+                    }, 500);
                 }
             });
-
-            img.addEventListener('touchend', function(e) {
-                const timeBetweenTouches = 500;
-                let lastTouchTime = 0;
-
-                return function(e) {
-                    const currentTime = new Date().getTime();
-                    if (currentTime - lastTouchTime <= timeBetweenTouches) {
-                        e.preventDefault();
-                    }
-                    lastTouchTime = currentTime;
-                };
-            }());
 
             galleryContainer.appendChild(img);
             gallery.appendChild(galleryContainer);
@@ -88,6 +79,18 @@ document.addEventListener("DOMContentLoaded", function() {
             e.preventDefault();
         }
     });
+
+    // 두 손가락 확대 허용을 위한 터치 이벤트 처리
+    document.addEventListener('touchmove', function(event) {
+        if (event.touches.length > 1) {
+            // 두 손가락 이상의 터치 이벤트는 허용
+            return;
+        }
+        // 그 외의 터치 이벤트는 막음
+        if (event.scale !== 1) {
+            event.preventDefault();
+        }
+    }, { passive: false });
 });
 
 function copyToClipboard(text) {
