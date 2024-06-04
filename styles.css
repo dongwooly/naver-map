@@ -7,16 +7,31 @@ body {
     background-color: #FFFEE8;
 }
 
-.first-image-container {
+.first-image-container,
+.image-container,
+.gif-container,
+.button-container {
     width: 100%;
     max-width: 800px;
+}
+
+.first-image-container,
+.image-container,
+.gif-container {
     position: relative;
 }
 
-.first-image-container img {
+.first-image-container img,
+.image img,
+.gif-image {
     width: 100%;
+    max-width: 800px;
     height: auto;
     display: block;
+    pointer-events: none;
+}
+
+.first-image-container img {
     opacity: 0; /* 로드되기 전에는 보이지 않도록 설정 */
     transition: opacity 1s ease-in-out;
 }
@@ -34,116 +49,86 @@ body {
     margin: 0 auto;
 }
 
-.image-container {
-    position: relative; 
-    width: 100%;
-    max-width: 800px;
-}
-
-.image img {
-    width: 100%;
-    max-width: 800px; /* 원하는 최대 너비 설정 */
-    height: auto;
-    margin: 0; /* 이미지 간격 설정 */
-    pointer-events: none; /* 이미지에 대한 클릭 이벤트를 비활성화 */
-}
-
 .gif-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 800px;
     margin: 20px 0;
 }
 
 .gif-image {
-    max-width: 800px; /* GIF 이미지의 최대 너비 설정 */
     width: 50%;
-    height: auto;
-    pointer-events: none; /* 이미지에 대한 클릭 이벤트를 비활성화 */
 }
 
 .countdown {
     font-size: 16px;
-    color: #438C7A; /* 글씨 색상 지정 */
+    color: #438C7A;
     text-align: center;
-    font-family: 'Arial', sans-serif; /* 폰트 지정 */
 }
 
 .add-to-calendar {
-    margin: 0;
     text-align: center;
+    margin: 0;
 }
 
-.add-to-calendar a {
+.add-to-calendar a,
+button {
     display: inline-block;
     padding: 10px 20px;
     border: 2px solid #438C7A;
-    color: #438C7A;
+    border-radius: 30px;
+    font-size: 16px;
     text-decoration: none;
-    border-radius: 30px;
-    font-size: 16px;
-}
-
-.add-to-calendar a:hover {
-    background-color: #438C7A;
-    color: white;
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: 800px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #438C7A;
-    border: 2px solid #438C7A;
-    background: none;
-    border-radius: 30px;
+    transition: background-color 0.3s, color 0.3s;
     cursor: pointer;
-    width: 120px; /* 버튼의 고정된 너비 설정 */
-    margin: 0 10px; /* 버튼 간의 간격 */
 }
 
+.add-to-calendar a {
+    color: #438C7A;
+}
+
+.add-to-calendar a:hover,
 button:hover {
     background-color: #438C7A;
     color: white;
+}
+
+button {
+    color: #438C7A;
+    background: none;
+    width: 120px;
+    margin: 0 10px;
 }
 
 .gallery {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    overflow-y: hidden; /* 수직 스크롤 숨김 */
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     width: 100%;
-    max-width: 800px; /* 갤러리의 최대 너비 설정 */
-    margin: 30px 0; /* 갤러리 위아래 간격 설정 */
+    max-width: 800px;
+    margin: 30px 0;
 }
 
 .gallery-container {
-    position: relative; /* 오버레이를 이미지 위에 배치하기 위해 부모 요소를 relative로 설정 */
+    position: relative;
     height: 100%;
     max-height: 400px;
     flex-shrink: 0;
-    margin-right: 10px; /* 이미지 간격 설정 */
+    margin-right: 10px;
 }
 
 .gallery-container img {
     height: 100%;
-    max-height: 400px; /* 이미지의 최대 높이 설정 */
-    width: auto; /* 너비를 자동으로 설정하여 비율 유지 */
+    max-height: 400px;
+    width: auto;
     scroll-snap-align: center;
-    object-fit: contain; /* 이미지가 잘리지 않도록 설정 */
+    object-fit: contain;
 }
 
 .gallery-container:last-child {
-    margin-right: 0; /* 마지막 이미지의 오른쪽 간격 제거 */
+    margin-right: 0;
 }
 
 .overlay {
@@ -152,19 +137,14 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: transparent; /* 투명한 오버레이 */
+    background: transparent;
     z-index: 1;
     pointer-events: none;
 }
 
-.gallery-container img {
-    pointer-events: none; /* 이미지에 대한 클릭 이벤트를 비활성화 */
-}
-
-/* 페이드 인 애니메이션 정의 */
 .fade-in {
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1.0s ease-in-out;
 }
 
 .fade-in.visible {
