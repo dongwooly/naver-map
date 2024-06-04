@@ -27,14 +27,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // 모바일 롱 프레스 방지
             img.addEventListener('touchstart', function(e) {
-                if (e.touches.length === 1) {
+                if (e.touches.length > 1 || e.targetTouches.length > 1) {
                     e.preventDefault();
-                    img.style.pointerEvents = 'none';
-                    setTimeout(() => {
-                        img.style.pointerEvents = 'auto';
-                    }, 500);
                 }
             });
+
+            img.addEventListener('touchend', function(e) {
+                const timeBetweenTouches = 500;
+                let lastTouchTime = 0;
+
+                return function(e) {
+                    const currentTime = new Date().getTime();
+                    if (currentTime - lastTouchTime <= timeBetweenTouches) {
+                        e.preventDefault();
+                    }
+                    lastTouchTime = currentTime;
+                };
+            }());
 
             galleryContainer.appendChild(img);
             gallery.appendChild(galleryContainer);
