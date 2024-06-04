@@ -130,6 +130,7 @@ button {
     width: auto;
     scroll-snap-align: center;
     object-fit: contain;
+    pointer-events: none;
 }
 
 .gallery-container:last-child {
