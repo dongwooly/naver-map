@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>이동우·정다은 결혼식</title>
-    <link rel="stylesheet" href="styles.css?v=1.0.23">
-    <script src="script.js?v=1.0.23"></script>
+    <link rel="stylesheet" href="styles.css?v=1.1.0">
+    <script src="script.js?v=1.1.0"></script>
     
     <!-- Open Graph 메타 태그 -->
     <meta property="og:title" content="이동우·정다은 결혼식">
@@ -56,13 +56,8 @@
         </div>
 
         <!-- D-Day 카운트다운 -->
-        <div class="countdown fade-in" id="countdown" style="margin-bottom: 12px;">
+        <div class="countdown fade-in" id="countdown" style="margin-bottom: 80px;">
             식까지 00일 00시간 남았습니다.
-        </div>
-
-        <!-- 일정에 추가하기 버튼 -->
-        <div class="add-to-calendar fade-in" style="margin-bottom: 50px;">
-            <a href="#" id="downloadCalendar">일정에 추가하기</a>
         </div>
 
         <!-- 다섯째 이미지 -->
@@ -185,18 +180,6 @@
 
         updateCountdown(); // 초기 호출
         setInterval(updateCountdown, 1000 * 60 * 60); // 한 시간에 한 번 업데이트
-    </script>
-
-    <script>
-    document.getElementById('downloadCalendar').addEventListener('click', function(e) {
-        e.preventDefault();
-        const link = document.createElement('a');
-        link.href = 'event.ics'; // 실제 .ics 파일 경로
-        link.download = 'event.ics';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    });
     </script>
 
 </body>
