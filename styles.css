@@ -7,8 +7,26 @@ body {
     background-color: #FFFEE8;
 }
 
-.image-container {
+.first-image-container {
+    width: 100%;
+    max-width: 800px;
     position: relative;
+}
+
+.first-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0; /* 로드되기 전에는 보이지 않도록 설정 */
+    transition: opacity 1s ease-in-out;
+}
+
+.first-image-container img.loaded {
+    opacity: 1; /* 로드된 후에는 보이도록 설정 */
+}
+
+.image-container {
+    position: relative; 
     width: 100%;
     max-width: 800px;
 }
@@ -135,7 +153,7 @@ button:hover {
 /* 페이드 인 애니메이션 정의 */
 .fade-in {
     opacity: 0;
-    transition: opacity 1.0s ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 
 .fade-in.visible {
