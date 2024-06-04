@@ -1,11 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
     const firstImage = document.getElementById('firstImage');
+    const contents = document.querySelectorAll('.content');
     const gallery = document.getElementById('gallery');
     const numberOfImages = 51; // 원하는 이미지 수 설정
 
-    // 첫 번째 이미지가 로드된 후 나머지 요소를 표시하고 페이드 인 적용
-    firstImage.onload = function() {
-        firstImage.classList.add('loaded');
+    // 함수로 분리하여 중복 방지
+    function showContent() {
+        // 모든 .content 요소를 표시
+        contents.forEach(content => {
+            content.style.display = 'block';
+        });
 
         // 모든 이미지를 한 번에 로드하고 표시
         for (let i = 1; i <= numberOfImages; i++) {
@@ -56,6 +60,12 @@ document.addEventListener("DOMContentLoaded", function() {
         faders.forEach(fader => {
             appearOnScroll.observe(fader);
         });
+    }
+
+    // 첫 번째 이미지가 로드된 후 나머지 요소를 표시하고 페이드 인 적용
+    firstImage.onload = function() {
+        firstImage.classList.add('loaded');
+        showContent();
     };
 
     // 첫 번째 이미지가 캐시에서 로드된 경우에도 onload 트리거
